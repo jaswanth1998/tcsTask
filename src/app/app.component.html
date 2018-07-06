@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h1>{{title}}</h1>
+
+<input type="text" #newTodo>
+
+
+
+<button (click)="addTodo(newTodo.value);  newTodo.value=''"> Add </button>
+
+<table>
+  <tr>
+    <th>label</th>
+    <th>check</th>
+    <th>Done</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let todo  of todos">
+    <td>  <del *ngIf="check.checked">{{todo.label}}</del> 
+    <p *ngIf="!check.checked">{{todo.label}}</p>
+    
+    </td>
+    <input #check  type="checkbox"   (click)="checks(check.checked)"> 
+    <td>{{ check.checked? '&#10003;':'&#10005;'}}</td>
+    <td>
+      <button  (click)= "deleteToDo(todo);">delete</button>
+    </td>
+  </tr>
+</table>
